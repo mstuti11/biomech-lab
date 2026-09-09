@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --lab-ground: #10161b;
+  --lab-surface: #171f26;
+  --lab-surface-raised: #1e2830;
+  --lab-line: #2a3540;
+  --lab-text: #eceff2;
+  --lab-text-muted: #8b98a5;
+  --lab-brass: #e0a83e;
+  --lab-brass-dim: #7a6432;
+  --lab-teal: #5ec8c2;
+  --lab-teal-dim: #33625f;
+  --lab-vermilion: #e2654b;
+}
+
+@theme inline {
+  --color-ground: var(--lab-ground);
+  --color-surface: var(--lab-surface);
+  --color-surface-raised: var(--lab-surface-raised);
+  --color-line: var(--lab-line);
+  --color-ink: var(--lab-text);
+  --color-ink-muted: var(--lab-text-muted);
+  --color-brass: var(--lab-brass);
+  --color-brass-dim: var(--lab-brass-dim);
+  --color-teal: var(--lab-teal);
+  --color-teal-dim: var(--lab-teal-dim);
+  --color-vermilion: var(--lab-vermilion);
+  --font-display: Fraunces, "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+body {
+  background: var(--lab-ground);
+  color: var(--lab-text);
+  font-family: var(--font-sans);
+  background-image:
+    linear-gradient(var(--lab-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lab-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--lab-brass);
+  color: #10161b;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin scrollbars that fit the instrument-panel feel */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--lab-surface); }
+::-webkit-scrollbar-thumb { background: var(--lab-line); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--lab-brass-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
