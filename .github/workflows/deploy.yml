@@ -68,7 +68,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
           # Read by next.config.ts to set basePath/assetPrefix correctly for
           # a GitHub Pages project site (https://<owner>.github.io/<repo>/).
