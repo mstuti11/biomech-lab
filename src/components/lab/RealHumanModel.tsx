@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
 import { tensionColor, tensionEmissive } from "@/lib/tension";
-
+import { withBasePath } from "@/lib/basePath";
 /**
  * A real, textured, CC0-licensed rigged human model — Khronos Group's
  * "CesiumMan" glTF sample (public domain, from the official glTF-Sample-Models
@@ -40,8 +40,7 @@ type CesiumGLTF = GLTF & {
   nodes: Record<string, THREE.Object3D>;
 };
 
-const MODEL_URL = "/models/CesiumMan.glb";
-const ARM_BONE = "Skeleton_arm_joint_R";
+const MODEL_URL = withBasePath("/models/CesiumMan.glb");const ARM_BONE = "Skeleton_arm_joint_R";
 const REST_OFFSET_DEG = 195.44;
 const ANGLE_SCALE = -1; // flip sign here if the arm raises the wrong direction
 const ARM_MESH_NAME_PATTERN = /arm|delt|shoulder|bicep|tricep/i;

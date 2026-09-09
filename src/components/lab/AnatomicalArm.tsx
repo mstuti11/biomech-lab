@@ -5,7 +5,7 @@ import { useLoader } from "@react-three/fiber";
 import { STLLoader } from "three-stdlib";
 import * as THREE from "three";
 import { tensionColor, tensionEmissive } from "@/lib/tension";
-
+import { withBasePath } from "@/lib/basePath";
 /**
  * A REAL anatomical arm — shoulder through fingertips — built from actual
  * named muscle and bone geometry from the BodyParts3D/Anatomography dataset
@@ -105,8 +105,7 @@ const FOREARM_HAND_PARTS: PartDef[] = [
 ];
 
 const ALL_PARTS = [...FIXED_PARTS, ...UPPER_ARM_PARTS, ...FOREARM_HAND_PARTS];
-const PART_URLS = ALL_PARTS.map((p) => `/models/anatomy/${p.file}.stl`);
-
+const PART_URLS = ALL_PARTS.map((p) => withBasePath(`/models/anatomy/${p.file}.stl`));
 const SCALE = 0.001; // mm -> m
 const SHOULDER_PIVOT_MM: [number, number, number] = [-166.4, -73.0, 1339.2];
 const ELBOW_PIVOT_MM: [number, number, number] = [-209.3, -66.3, 1047.0];

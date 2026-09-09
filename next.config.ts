@@ -14,14 +14,15 @@ const basePath = repo && !isUserOrgPagesRepo ? `/${repo}` : "";
 
 const nextConfig: NextConfig = {
   output: "export",
-  // Next.js's static export creates a same-named folder per route (for RSC
-  // prefetch payloads) alongside e.g. "experiments.html". Without a trailing
-  // slash, GitHub Pages resolves that folder instead of the .html file and
-  // finds no index.html inside — this forces the folder/index.html layout
-  // so every route resolves cleanly.
   trailingSlash: true,
   basePath,
   assetPrefix: basePath,
+  // Exposes basePath to client-side code (see src/lib/basePath.ts) — Next
+  // only rewrites basePath into framework-generated URLs automatically, not
+  // into plain strings your own code uses to fetch public/ files directly.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
   },
